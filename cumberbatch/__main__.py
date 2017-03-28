@@ -9,6 +9,7 @@ def main():
     exclusive = parser.add_mutually_exclusive_group()
     exclusive.add_argument('--first', action='store_true', help="Only generate a first name.")
     exclusive.add_argument('--last', action='store_true', help="Only generate a last name.")
+    exclusive.add_argument('--penguins', action='store_true', help=u"Only generate \U0001F427.")
     parser.add_argument('--nsfw', action='store_true', help="Allow NSFW names.")
     opts = parser.parse_args()
     clean = not opts.nsfw
@@ -16,9 +17,10 @@ def main():
         print(cumberbatch.first(clean=clean))
     elif opts.last:
         print(cumberbatch.last(clean=clean))
+    elif opts.penguins:
+        print(cumberbatch.penguins(clean=clean))
     else:
         print(cumberbatch.full(clean=clean))
 
 if __name__ == '__main__':
     main()
-

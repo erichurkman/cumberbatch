@@ -32,6 +32,15 @@ def full(clean=True):
     return __compose_name(clean)
 
 
+def penguin(clean=True):
+    """ A randomized name for penguins.
+    :param clean: If false, returns some names your boss may find objectionable
+                  (or, at least, once he utters unsafe names for beloved
+                  penguins)
+    """
+    return random.choice(Lists.penguins[clean])
+
+
 __p_full_name = {}  # a dict indexed by the boolean 'clean'
 def __pick_fullname_from_list(clean):
     """ Flip a coin to choose between fullnames list and composing one
@@ -275,6 +284,12 @@ class Lists(object):
         "Wanda's Crotchfruit"
     )
 
+    penguins_all = (
+        "Penguin",
+        "Pengling",
+        "Pengwing",
+    )
+
     firstnames_all = firstnames_clean + firstnames_unclean
     lastnames_all = lastnames_clean + lastnames_unclean
     fullnames_all = fullnames_clean + fullnames_unclean
@@ -293,4 +308,9 @@ class Lists(object):
     fullnames = {
         True: fullnames_clean,
         False: fullnames_all
+    }
+
+    penguins = {
+        True: penguins_all,
+        False: penguins_all
     }

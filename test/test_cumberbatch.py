@@ -13,10 +13,12 @@ class TestCumberbatch(unittest.TestCase):
         self.assertIsInstance(cumberbatch.first(), str)
         self.assertIsInstance(cumberbatch.last(), str)
         self.assertIsInstance(cumberbatch.full(), str)
+        self.assertIsInstance(cumberbatch.penguin(), str)
 
         self.assertIsInstance(cumberbatch.first(clean=False), str)
         self.assertIsInstance(cumberbatch.last(clean=False), str)
         self.assertIsInstance(cumberbatch.full(clean=False), str)
+        self.assertIsInstance(cumberbatch.penguin(clean=False), str)
 
     def test_full_generates_two_words_with_space(self):
         for i in range(100):
@@ -86,3 +88,8 @@ class TestCumberbatch(unittest.TestCase):
                 self.assertTrue(full_first.startswith('B') or full_last.startswith('C'))
             except ValueError, e:
                 raise ValueError(fullname)
+
+    def test_penguins_are_real(self):
+        for i in range(1000):
+            penguin = cumberbatch.penguin()
+            self.assertTrue(penguin.startswith('Peng'))
